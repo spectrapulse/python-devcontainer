@@ -1,0 +1,56 @@
+{
+    "name": "Chara",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".",
+        "args": {
+            "VARIANT": "3.10-bullseye"
+        }
+    },
+    "settings": {
+        // File Explorer Settings
+        "files.exclude": {
+            "**/.git": true,
+            "**/.svn": true,
+            "**/.hg": true,
+            "**/CVS": true,
+            "**/.DS_Store": true,
+            "**/Thumbs.db": true,
+            "**/__pycache__": true,
+            "**/.nox": true,
+            "**/.venv": true,
+        },
+        // Editor Settings
+        "editor.formatOnPaste": true,
+        "editor.formatOnSave": true,
+        "editor.rulers": [
+            79
+        ],
+        // Python Settings
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.linting.enabled": true,
+        "python.linting.flake8Enabled": true,
+        "python.linting.flake8Path": "/usr/local/py-utils/bin/flake8",
+        "python.formatting.provider": "black",
+        "python.formatting.blackPath": "/usr/local/py-utils/bin/black",
+        "python.formatting.blackArgs": [
+            "--config=./pyproject.toml"
+        ],
+        "python.analysis.logLevel": "Trace",
+        "python.analysis.diagnosticMode": "workspace",
+        "python.analysis.typeCheckingMode": "strict",
+        "python.analysis.completeFunctionParens": true,
+    },
+    "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "bungcip.better-toml",
+    ],
+    "remoteUser": "vscode",
+    "postCreateCommand": "[ -f \"./poetry.lock\" ] || exit 0 && python -m poetry install",
+    "features": {
+        // No need to install git as this 
+        // should be handled by host OS.
+        "git": "os-provided"
+    }
+}

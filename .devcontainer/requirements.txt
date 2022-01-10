@@ -1,0 +1,10 @@
+# Since these dependencies are not essential to the project
+# But more related to the dev environment if anything.
+# version locking doesn't make much sense...
+nox
+nox-poetry # WARN: This could become a future concern... Unsure
+poetry
+flake8
+black
+pytest
+pyright
