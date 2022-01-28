@@ -1,6 +1,8 @@
 ARG VARIANT="3.10-bullseye"
 FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
 
+ARG USERNAME=vscode
+
 # Ensure gpnupg2 is installed for signing commits
 RUN apt-get update \
     && export DEBIAN_FRONTEND=noninteractive \
