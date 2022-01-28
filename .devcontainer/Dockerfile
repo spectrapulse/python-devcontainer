@@ -14,5 +14,6 @@ RUN pip3 --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tpm/requ
     && rm -rf /tmp/pip-tmp
 
 # Add configuration for poetry
-RUN mkdir -p /home/${USERNAME}/.config/pypoetry
+RUN mkdir -p /home/${USERNAME}/.config/pypoetry \
+    && chown ${USERNAME}:${USERNAME} /home/${USERNAME}/.config -R
 COPY --chown=${USERNAME}:${USERNAME} poetry_config.toml /home/${USERNAME}/.config/pypoetry/config.toml
